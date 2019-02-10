@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+  
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="Modelos.Alumno" table="Alumno">
+        <id name="idAlumno" column="idAlumno"> 
+            <generator class="identity" /> 
+        </id> 
+      
+        <property name="Nombre" column="Nombre"/>
+        <property name="Sexo" column="Sexo" />
+        <property name="edad" column="edad" />
+        <property name="idCiudad" column="idCiudad" />
+        
+        <join table="Ciudad" inverse="true" optional="false">
+            <key column="idCiudad"/>
+            <many-to-one name="Ciudad" class="Modelos.Ciudad" column="idCiudad" not-null="true" insert="false" update="false" 
+            fetch="select" />
+        </join>
+        
+    </class>
+</hibernate-mapping>
